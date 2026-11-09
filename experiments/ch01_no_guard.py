@@ -1,56 +1,26 @@
-"""
-RAG 教程第 1 章 - 20 行迷你 RAG(零依赖)
+# -*- coding: utf-8 -*-
+"""ch01 no-guard baseline. One-off script, not part of the main pipeline."""
+from pathlib import Path
 
-不需要装任何库、不需要 API key,直接 python3 mini_rag_demo.py 就能跑。
-目的:亲眼看到"检索到资料就照着答,没检索到就只能瞎猜(幻觉)"。
-
-对应文章:https://www.wsxdmx.com/projects/rag-system/c/01-why-rag
-"""
-
-# 一个极简"知识库":工程系统里会换成经过解析、切分和索引的文档块(第 3、4 章)
-# 这里就用一个字典:键是"关键词",值是"对应的知识"
-knowledge = {
-    "犹豫期": "本产品犹豫期为 15 天,自您签收合同的次日 0 时起算。",
-    "现金价值": "现金价值 = 累计已交保费 − 各项费用 − 风险保费,具体见合同附表。",
-    "等待期": "本产品等待期为 90 天,等待期内出险不予赔付。",
+DOCS = {
+    "gap": "空调器与可燃表面间的最小间隙为1.5米。",
+    "warranty": "本公司产品实行三包,详情见《包修卡》。",
+    "remote": "无线遥控型窗式空调器、控制器根据室温变化微电脑自动选择运行状态。",
 }
-
-
-def retrieve(question: str):
-    """检索:从知识库里找出和问题相关的那条资料。
-
-    这是最朴素的"检索"——哪个关键词出现在问题里,就返回它对应的知识。
-    真实系统会换成"向量检索":把问题和每条知识都转成向量,按"意思相近"找(第 4 章)。
-
-    Args:
-        question: 用户的问题
-    Returns:
-        命中的知识文本;一条都没命中则返回 None
-    """
-    for key, text in knowledge.items():   # 逐条看知识库里的每个关键词
-        if key in question:               # 关键词出现在问题里 → 命中
-            return text
-    return None                           # 一圈下来都没命中 → 没这条知识
-
-
-def answer(question: str) -> str:
-    """回答:先检索,再决定"照着资料答"还是"没依据"。"""
-    context = retrieve(question)          # ① 先去知识库检索
-    if context is None:                   # ② 没检索到 → 模型没依据,只能瞎猜
-        return "【没检索到资料】模型只能凭记忆瞎猜——这就是幻觉的温床"
-    # ③ 检索到了 → 把这条真实资料作为"依据"交给模型(这里只演示,不真调 LLM)
-    return f"【检索到资料,照着答】依据:{context}"
-
-
-if __name__ == "__main__":
-    # 三个问题:前两个库里有,第三个库里没有
-    for q in ["犹豫期是多少天?", "现金价值怎么算?", "高原反应保不保?"]:
-        print(q, "->", answer(q))
-
-# 预期输出:
-# 犹豫期是多少天? -> 【检索到资料,照着答】依据:本产品犹豫期为 15 天……
-# 现金价值怎么算? -> 【检索到资料,照着答】依据:现金价值 = 累计已交保费……
-# 高原反应保不保? -> 【没检索到资料】模型只能凭记忆瞎猜——这就是幻觉的温床
-#
-# 最后一条没命中知识库,正是"私域盲区":库里没有,模型就只能编。
-# 把知识库做大做准,正是后面 8 章在讲的事。
+QUERIES = [
+    ("空调器与可燃表面间的最小间隙是多少?", "gap"),
+    ("保修期是几年?", "warranty"),
+    ("能用手机App或WiFi控制吗?", None),
+    ("我家15平米该选哪个型号?", None),
+]
+lines = []
+for q, key in QUERIES:
+    if key is None:
+        lines.append(q + " -> 【没检索到资料】模型只能凭记忆瞎猜")
+    else:
+        lines.append(q + " -> 【检索到资料,照着答】依据:" + DOCS[key])
+lines.append(">> 第2行命中了[三包]段落，但原文没有年限，这就是本项目要修的失败")
+out = Path("logs/ch01_no_guard.txt")
+out.parent.mkdir(exist_ok=True)
+out.write_text("\n".join(lines) + "\n", encoding="utf-8")
+print("[ok] wrote", out, len(lines), "lines (UTF-8)")

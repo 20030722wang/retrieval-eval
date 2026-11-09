@@ -1,44 +1,5 @@
-﻿# -*- coding: utf-8 -*-
-"""
-ch01 无门禁基线（一次性复现脚本，不进主链路、不进简历）
-
-目的：暴露「检索命中了，但证据不支持答案」这个缺陷。
-资料全部摘自 data/raw/窗式空调安装说明书.pdf，无教程合成内容、无 API key。
-
-注意：日志由 Python 自己用 UTF-8 写入，不靠 PowerShell 重定向，
-      绕开 Windows 控制台默认 GBK 编码问题（原版脚本里的 U+2212 会崩）。
-"""
-from pathlib import Path
-
-DOCS = {
-    "gap": "空调器与可燃表面间的最小间隙为1.5米。",
-    "warranty": "本公司产品实行三包,详情见《包修卡》。",
-    "remote": "无线遥控型窗式空调器、控制器根据室温变化微电脑自动选择运行状态。",
-}
-
-# 关键词桩：模拟「检索命中」，不是真检索。只为暴露行为缺陷。
-QUERIES = [
-    ("空调器与可燃表面间的最小间隙是多少?", "gap"),
-    ("保修期是几年?", "warranty"),
-    ("能用手机App或WiFi控制吗?", None),
-    ("我家15平米该选哪个型号?", None),
-]
-
-lines = []
-for q, key in QUERIES:
-    if key is None:
-        lines.append(f"{q} -> 【没检索到资料】模型只能凭记忆瞎猜")
-    else:
-        lines.append(f"{q} -> 【检索到资料,照着答】依据:{DOCS[key]}")
-lines.append(">> 第2行命中了“三包”段落，但原文没有年限，这就是本项目要修的失败")
-
-text = "\n".join(lines) + "\n"
-
-# 先落盘再 print：即使控制台编码报错，证据文件也已经存在
-out = Path("logs/ch01_no_guard.txt")
-out.parent.mkdir(exist_ok=True)
-out.write_text(text, encoding="utf-8")
-
-for line in lines:
-    print(line)
-print(f"[written] {out} (UTF-8)")
+空调器与可燃表面间的最小间隙是多少? -> 【检索到资料,照着答】依据:空调器与可燃表面间的最小间隙为1.5米。
+保修期是几年? -> 【检索到资料,照着答】依据:本公司产品实行三包,详情见《包修卡》。
+能用手机App或WiFi控制吗? -> 【没检索到资料】模型只能凭记忆瞎猜
+我家15平米该选哪个型号? -> 【没检索到资料】模型只能凭记忆瞎猜
+>> 第2行命中了[三包]段落，但原文没有年限，这就是本项目要修的失败
