@@ -1,0 +1,22 @@
+=== pypdf ===
+pages: 24
+total_chars: 4096
+token 'KCD-46': count=2 pages=1,21
+token '3600': count=4 pages=4,21
+token '1.5': count=1 pages=15
+token '三包': count=0 pages=NONE
+token '包修卡': count=0 pages=NONE
+token 'R410A': count=11 pages=4
+low_text_pages(<20): 8,10,11,16,18,19,20
+=== pymupdf ===
+pages: 24
+total_chars: 4237
+token 'KCD-46': count=2 pages=1,21
+token '3600': count=4 pages=4,21
+token '1.5': count=1 pages=15
+token '三包': count=0 pages=NONE
+token '包修卡': count=0 pages=NONE
+token 'R410A': count=11 pages=4
+low_text_pages(<20): 8,10,11,16,18,19,20
+--- pymupdf page 4 first 300 ---
+-2- | 整机型号 | KC- | 46/(4616)NAb- | 3 | KC- | 46/(4616)NAa- | 3 | KC- | 35/(3516)NAb- | 3 | KC- | 35/(3516)NAa- | 3 | KC- | 26/(2616)NAb- | 3 | KC- | 26/(2616)NAa- | 3 | KC- | 20/(2016)NAb- | 3 | KC- | 20/(2016)NAa- | 3 | KCD- | 46/(4616)NAa- | 3 | KCD- | 35/(3516)NAa- | 3 | KCD- | 26/(2616)NAa- | 3 | 械 | 机 | 热 | 加 | 电 | 械 | 机 | 热 | 加 | 电 | 械 | 机 | 热 | 加 | 电 | 械 | 机 | 冷 | 单 | 控 | 遥 | 冷 | 单 | 械 | 机 | 冷 | 单 | 控 | 遥 | 冷 | 单 | 械 | 机 | 冷 | 

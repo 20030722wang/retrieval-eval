@@ -1,0 +1,24 @@
+=== A naive fixed-length ===
+total_chunks: 30
+low_quality_chunks_entering_retrieval: 8
+=== B loader quality gate ===
+total_chunks: 23
+skipped_low_text_pages: 8,10,11,16,18,19,20
+chunks_with_printed_page: 21/23
+token 3600 -> pdf_page=4 printed_page=2
+  sample: -2- | 整机型号 | KC- | 46/(4616)NAb- | 3 | KC- | 46/(4616)NAa- | 3 | KC- | 35/(3516)NAb- | 3 | KC- | 35/(3516)NAa- | 3 | KC- | 26/(2616)NAb- | 3 | KC- | 26/(2616)NAa- | 3 | KC- | 20/(2016)NAb- | 3 | KC- | 20/(2016)NAa- | 3 | KCD- | 46/(4616)NAa- | 3 | KCD- | 35/(3
+token 3600 -> pdf_page=21 printed_page=19
+  sample: -19- | 辅助电加热装置其装配方法如下图所示,它属于陶瓷PTC加 | 电加热额定功率为3100W;KCD-35型 | 6 | 35 ，KCD-46型窗 | 机电加热额定功率为3600W。
+=== query behavior A vs B ===
+Q: 空调器与可燃表面间的最小间隙是多少?
+  A: answered pdf_page=15
+  B: answered pdf_page=15 printed_page=13
+Q: KCD-46型窗机电加热额定功率是多少瓦?
+  A: answered pdf_page=4
+  B: answered pdf_page=4 printed_page=2
+Q: 能用手机App或WiFi控制吗?
+  A: answered_with=first_chunk -- NO EVIDENCE, NO REFUSAL
+  B: REFUSED: no supporting chunk (low-text pages gated out)
+Q: 保修期是几年?
+  A: answered_with=first_chunk -- NO EVIDENCE, NO REFUSAL
+  B: REFUSED: no supporting chunk (low-text pages gated out)

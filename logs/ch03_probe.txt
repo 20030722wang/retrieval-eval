@@ -1,0 +1,35 @@
+pages: 24
+page 1: chars=236
+page 2: chars=72
+page 3: chars=174
+page 4: chars=1400
+page 5: chars=31
+page 6: chars=82
+page 7: chars=49
+page 8: chars=3
+page 9: chars=184
+page 10: chars=14
+page 11: chars=10
+page 12: chars=297
+page 13: chars=68
+page 14: chars=316
+page 15: chars=408
+page 16: chars=4
+page 17: chars=160
+page 18: chars=4
+page 19: chars=5
+page 20: chars=4
+page 21: chars=85
+page 22: chars=281
+page 23: chars=134
+page 24: chars=52
+token 'KCD-46': count=2
+token '3600': count=4
+token '1.5': count=1
+token '三包': count=0
+token '包修卡': count=0
+token 'R410A': count=11
+page2: KCD-46@-1, 3600@-1, distance=-1
+--- page2 first 400 chars ---
+-20- | 遥控器按键使用方法 | 换新风功能 | 插头插座 | 1 | 9 | 7 | 7 | 4 | 3 | 2 | 19 | 18 | 17 | 16 | 15 | 15 | 14 | 13 | 12 | 11 | 20
+WARN: Chinese text not extractable -> font/encoding issue, parse-layer bad case
