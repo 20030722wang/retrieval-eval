@@ -1,3 +1,13 @@
+# 检索评测系统（个人练习项目）
+
+> 教学基线来自 [rag-from-zero](https://github.com/MisterBooo/rag-from-zero)；
+> `chapters/` 与 `rag_project/` 为原版内容，不参与本项目运行。
+> 本项目独立实现见 `experiments/` / `logs/` / `data/raw/`；
+> 问题边界与验收见 `PROBLEM_BOUNDARY.md` / `PIPELINE_TRACE.md` / `决策卡.md`。
+> 依赖由根 `pyproject.toml` + `uv.lock` 管理：`uv sync` 后 `uv run python ...`。
+> 语料为公开产品说明书，仅用于检索评测练习，非客户项目。
+
+---
 <div align="center">
 
 # RAG From Zero
