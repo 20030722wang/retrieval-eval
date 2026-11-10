@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Compare two tokenizations on the gated chunk set."""
+"""对照两种 token 化方式；不下载模型，日志以 UTF-8 落盘。"""
 import re, math
 from pathlib import Path
 from collections import Counter
@@ -9,7 +9,7 @@ pdf = Path("data/raw/窗式空调安装说明书.pdf")
 pages = [(p.extract_text() or "") for p in PdfReader(str(pdf)).pages]
 lines = []
 
-# same gate as loader_ab.py
+# 与 loader_ab.py 相同的低文本页门禁
 CHUNK, MIN = 300, 20
 chunks = []
 for i, t in enumerate(pages):
@@ -65,7 +65,7 @@ for name, tokf in [("A char-bigram", toks_a), ("B mixed-token", toks_b)]:
         lines.append("  top3_pages=" + str(top) + " top1_score=" + str(round(sc[0][0], 3)))
         lines.append("  gold=" + str(gold) + " hit@1=" + str(hit1) + " hit@3=" + str(hit3))
         if gold is None:
-            lines.append("  NOTE: no gold answer in corpus")
+            lines.append("  NOTE: 语料中无此问题的答案")
 
 out = Path("logs/ch04_tokenizer_ab.txt")
 out.parent.mkdir(exist_ok=True)

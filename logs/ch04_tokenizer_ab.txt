@@ -12,11 +12,11 @@ Q: 本机使用哪种制冷剂?
 Q: 能用手机App或WiFi控制吗?
   top3_pages=[17, 12, 1] top1_score=0.016
   gold=None hit@1=False hit@3=False
-  NOTE: no gold answer in corpus
+  NOTE: 语料中无此问题的答案
 Q: 保修期是几年?
   top3_pages=[1, 2, 3] top1_score=0.0
   gold=None hit@1=False hit@3=False
-  NOTE: no gold answer in corpus
+  NOTE: 语料中无此问题的答案
 === B mixed-token ===
 Q: KCD-46型窗机电加热额定功率是多少瓦?
   top3_pages=[21, 9, 4] top1_score=0.542
@@ -30,8 +30,8 @@ Q: 本机使用哪种制冷剂?
 Q: 能用手机App或WiFi控制吗?
   top3_pages=[17, 12, 1] top1_score=0.039
   gold=None hit@1=False hit@3=False
-  NOTE: no gold answer in corpus
+  NOTE: 语料中无此问题的答案
 Q: 保修期是几年?
   top3_pages=[1, 2, 3] top1_score=0.0
   gold=None hit@1=False hit@3=False
-  NOTE: no gold answer in corpus
+  NOTE: 语料中无此问题的答案

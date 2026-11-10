@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Compare text extraction between two PDF parsers."""
+"""对照两个 PDF 解析器的文本提取结果。"""
 from pathlib import Path
 
 pdf = Path("data/raw/窗式空调安装说明书.pdf")

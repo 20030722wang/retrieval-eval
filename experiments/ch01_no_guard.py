@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Baseline: retrieval hit without evidence-support check."""
+"""基线：检索命中但未做证据支持校验。"""
 from pathlib import Path
 
 DOCS = {
@@ -19,7 +19,7 @@ for q, key in QUERIES:
         lines.append(q + " -> 【没检索到资料】模型只能凭记忆瞎猜")
     else:
         lines.append(q + " -> 【检索到资料,照着答】依据:" + DOCS[key])
-lines.append(">> case: retrieval hit without evidence support")
+lines.append(">> 样本：检索命中但证据不支持")
 out = Path("logs/ch01_no_guard.txt")
 out.parent.mkdir(exist_ok=True)
 out.write_text("\n".join(lines) + "\n", encoding="utf-8")

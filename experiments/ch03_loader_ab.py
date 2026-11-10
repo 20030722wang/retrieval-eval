@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Compare fixed-length chunking with a text-quality gate."""
+"""对照固定长度切分与低文本页门禁。"""
 import re
 from pathlib import Path
 from pypdf import PdfReader
@@ -15,7 +15,7 @@ def printed_page(t):
 
 CHUNK = 300
 
-# baseline
+# 基线：固定长度切分，所有页进入检索
 a = []
 for i, t in enumerate(pages):
     for s in range(0, len(t), CHUNK):
@@ -25,7 +25,7 @@ lines.append("total_chunks: " + str(len(a)))
 lines.append("low_quality_chunks_entering_retrieval: "
              + str(sum(1 for c in a if len(c["text"].strip()) < 20)))
 
-# gated
+# 对照：低文本页门禁 + 印刷页码归一化
 b, skipped = [], []
 for i, t in enumerate(pages):
     if len(t.strip()) < 20:

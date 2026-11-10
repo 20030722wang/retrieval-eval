@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Inspect PDF text-layer coverage and token positions."""
+"""检查 PDF 文本层覆盖率与关键标识所在页。"""
 from pathlib import Path
 from pypdf import PdfReader
 
