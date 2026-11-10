@@ -1,0 +1,9 @@
+query: 本机使用哪种制冷剂?
+RRF k=60, rank1=1/61, rank2=1/62
+chunk 5 rank_cos=8 rank_bm25=1 rrf=0.031099 has_gold=True
+chunk 14 rank_cos=4 rank_bm25=2 rrf=0.031754 has_gold=False
+chunk 12 rank_cos=1 rank_bm25=7 rrf=0.031319 has_gold=False
+chunk 9 rank_cos=16 rank_bm25=16 rrf=0.026316 has_gold=False
+chunk 22 rank_cos=23 rank_bm25=23 rrf=0.024096 has_gold=False
+chunk 4 rank_cos=13 rank_bm25=11 rrf=0.027783 has_gold=False
+chunk 7 rank_cos=5 rank_bm25=3 rrf=0.031258 has_gold=False

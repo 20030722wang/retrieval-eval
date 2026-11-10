@@ -1,0 +1,51 @@
+chunks_after_gate: 23
+=== A cosine(mixed-token) ===
+Q: KCD-46型窗机电加热额定功率是多少瓦?
+  top3(page,chunk_id,has_gold)=[(21, 19, True), (9, 11, False), (4, 4, True)]
+  gold=3600 hit@1=True hit@3=True MRR=1.0
+Q: 空调器与可燃表面间的最小间隙是多少?
+  top3(page,chunk_id,has_gold)=[(3, 2, False), (12, 12, False), (9, 11, False)]
+  gold=1.5 hit@1=False hit@3=False MRR=0.059
+Q: 本机使用哪种制冷剂?
+  top3(page,chunk_id,has_gold)=[(12, 12, False), (9, 11, False), (22, 20, False)]
+  gold=R410A hit@1=False hit@3=False MRR=0.125
+Q: 能用手机App或WiFi控制吗?
+  top3(page,chunk_id,has_gold)=[(17, 18, False), (12, 12, False), (1, 0, False)]
+  NOTE: 语料中无此问题的答案；top1 仅作观察
+Q: 保修期是几年?
+  top3(page,chunk_id,has_gold)=[(1, 0, False), (2, 1, False), (3, 2, False)]
+  NOTE: 语料中无此问题的答案；top1 仅作观察
+=== B bm25(k1=1.5,b=0.75) ===
+Q: KCD-46型窗机电加热额定功率是多少瓦?
+  top3(page,chunk_id,has_gold)=[(21, 19, True), (4, 4, True), (1, 0, False)]
+  gold=3600 hit@1=True hit@3=True MRR=1.0
+Q: 空调器与可燃表面间的最小间隙是多少?
+  top3(page,chunk_id,has_gold)=[(3, 2, False), (12, 12, False), (9, 11, False)]
+  gold=1.5 hit@1=False hit@3=False MRR=0.059
+Q: 本机使用哪种制冷剂?
+  top3(page,chunk_id,has_gold)=[(4, 5, True), (14, 14, False), (4, 7, False)]
+  gold=R410A hit@1=True hit@3=True MRR=1.0
+Q: 能用手机App或WiFi控制吗?
+  top3(page,chunk_id,has_gold)=[(17, 18, False), (12, 12, False), (1, 0, False)]
+  NOTE: 语料中无此问题的答案；top1 仅作观察
+Q: 保修期是几年?
+  top3(page,chunk_id,has_gold)=[(1, 0, False), (2, 1, False), (3, 2, False)]
+  NOTE: 语料中无此问题的答案；top1 仅作观察
+=== C RRF(k=60) hybrid ===
+Q: KCD-46型窗机电加热额定功率是多少瓦?
+  top3(page,chunk_id,has_gold)=[(21, 19, True), (4, 4, True), (9, 11, False)]
+  gold=3600 hit@1=True hit@3=True MRR=1.0
+Q: 空调器与可燃表面间的最小间隙是多少?
+  top3(page,chunk_id,has_gold)=[(3, 2, False), (12, 12, False), (9, 11, False)]
+  gold=1.5 hit@1=False hit@3=False MRR=0.059
+Q: 本机使用哪种制冷剂?
+  top3(page,chunk_id,has_gold)=[(14, 14, False), (12, 12, False), (22, 20, False)]
+  gold=R410A hit@1=False hit@3=False MRR=0.2
+Q: 能用手机App或WiFi控制吗?
+  top3(page,chunk_id,has_gold)=[(17, 18, False), (12, 12, False), (1, 0, False)]
+  NOTE: 语料中无此问题的答案；top1 仅作观察
+Q: 保修期是几年?
+  top3(page,chunk_id,has_gold)=[(1, 0, False), (2, 1, False), (3, 2, False)]
+  NOTE: 语料中无此问题的答案；top1 仅作观察
+NOTE: 命中按 chunk 判定，不按页判定。
+NOTE: 融合用 RRF，因 cosine 与 BM25 量纲不同，不做分数归一化。
