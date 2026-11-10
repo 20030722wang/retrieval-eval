@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""ch03 A/B: naive chunks vs loader quality gate. UTF-8 log, ASCII-only print."""
+"""Compare fixed-length chunking with a text-quality gate."""
 import re
 from pathlib import Path
 from pypdf import PdfReader
@@ -15,7 +15,7 @@ def printed_page(t):
 
 CHUNK = 300
 
-# A: naive fixed-length, every page enters retrieval
+# baseline
 a = []
 for i, t in enumerate(pages):
     for s in range(0, len(t), CHUNK):
@@ -25,7 +25,7 @@ lines.append("total_chunks: " + str(len(a)))
 lines.append("low_quality_chunks_entering_retrieval: "
              + str(sum(1 for c in a if len(c["text"].strip()) < 20)))
 
-# B: loader quality gate + page-id normalization
+# gated
 b, skipped = [], []
 for i, t in enumerate(pages):
     if len(t.strip()) < 20:

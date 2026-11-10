@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""ch03 probe: verify PIPELINE_TRACE predictions against the real PDF."""
+"""Inspect PDF text-layer coverage and token positions."""
 from pathlib import Path
 from pypdf import PdfReader
 

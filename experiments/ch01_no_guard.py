@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""ch01 no-guard baseline. One-off script, not part of the main pipeline."""
+"""Baseline: retrieval hit without evidence-support check."""
 from pathlib import Path
 
 DOCS = {
@@ -19,7 +19,7 @@ for q, key in QUERIES:
         lines.append(q + " -> 【没检索到资料】模型只能凭记忆瞎猜")
     else:
         lines.append(q + " -> 【检索到资料,照着答】依据:" + DOCS[key])
-lines.append(">> 第2行命中了[三包]段落，但原文没有年限，这就是本项目要修的失败")
+lines.append(">> case: retrieval hit without evidence support")
 out = Path("logs/ch01_no_guard.txt")
 out.parent.mkdir(exist_ok=True)
 out.write_text("\n".join(lines) + "\n", encoding="utf-8")

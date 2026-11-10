@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""ch03 A/B: pypdf vs pymupdf on the same PDF. UTF-8 log, ASCII-only print."""
+"""Compare text extraction between two PDF parsers."""
 from pathlib import Path
 
 pdf = Path("data/raw/窗式空调安装说明书.pdf")

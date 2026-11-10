@@ -1,6 +1,10 @@
-﻿.idea/
+.idea/
 .venv/
 __pycache__/
 *.pyc
 .env
 .pytest_cache/
+决策卡.md
+阶段笔记.md
+课堂速查卡.html
+*课堂速查*
