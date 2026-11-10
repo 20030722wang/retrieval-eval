@@ -58,7 +58,7 @@ def coarse(q, k=5):
 
 # 精排特征：从 query 取目标型号，判断 chunk 能否直接绑定出数值
 MODEL_RE = re.compile(r"KCD-(\d+)")
-EXACT_RE = re.compile(r"KCD-(\d+)型窗机电加热额定功率为(\d+)W")
+EXACT_RE = re.compile(r"KCD-(\d+)[\s\S]{0,8}?额定功率为(\d+)W")
 
 def features(q, cid):
     t = chunks[cid]["text"]
@@ -79,7 +79,7 @@ def rerank(q, pool):
     f = {cid: features(q, cid) for cid in pool}
     def key(cid):
         x = f[cid]
-        return (-int(x["exact"]), int(x["competing"]),
+        return (-int(x["exact"]), (int(x["competing"]) if not x["exact"] else 0),
                 int(x["fragmented"]), -int(x["loose"]), pool.index(cid))
     return sorted(pool, key=key), f
 

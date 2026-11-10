@@ -1,8 +1,8 @@
 chunks_after_gate: 23
 Q: KCD-46型窗机电加热额定功率是多少瓦?
-  coarse_top5(page,cid,extracted,competing,fragmented)=[(21, 19, '-', True, False), (4, 4, '-', False, False), (1, 0, '-', False, False), (9, 11, '-', False, False), (4, 3, '-', False, False)]
-  rerank_top5=[(1, 0, '-', False, False), (4, 3, '-', False, False), (4, 4, '-', False, False), (9, 11, '-', False, False), (21, 19, '-', True, False)]
-  top1_extracted: coarse=None rerank=None
+  coarse_top5(page,cid,extracted,competing,fragmented)=[(21, 19, '3600W', True, False), (4, 4, '-', False, False), (1, 0, '-', False, False), (9, 11, '-', False, False), (4, 3, '-', False, False)]
+  rerank_top5=[(21, 19, '3600W', True, False), (1, 0, '-', False, False), (4, 3, '-', False, False), (4, 4, '-', False, False), (9, 11, '-', False, False)]
+  top1_extracted: coarse=3600W rerank=3600W
   gold=3600W in_candidate_pool=True
 Q: 空调器与可燃表面间的最小间隙是多少?
   coarse_top5(page,cid,extracted,competing,fragmented)=[(3, 2, '-', False, False), (12, 12, '-', False, False), (9, 11, '-', False, False), (4, 7, '-', False, False), (14, 14, '-', False, False)]
