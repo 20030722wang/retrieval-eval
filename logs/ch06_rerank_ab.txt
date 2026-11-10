@@ -1,0 +1,19 @@
+chunks_after_gate: 23
+Q: KCD-46型窗机电加热额定功率是多少瓦?
+  coarse_top5(page,cid,extracted,competing,fragmented)=[(21, 19, '-', True, False), (4, 4, '-', False, False), (1, 0, '-', False, False), (9, 11, '-', False, False), (4, 3, '-', False, False)]
+  rerank_top5=[(1, 0, '-', False, False), (4, 3, '-', False, False), (4, 4, '-', False, False), (9, 11, '-', False, False), (21, 19, '-', True, False)]
+  top1_extracted: coarse=None rerank=None
+  gold=3600W in_candidate_pool=True
+Q: 空调器与可燃表面间的最小间隙是多少?
+  coarse_top5(page,cid,extracted,competing,fragmented)=[(3, 2, '-', False, False), (12, 12, '-', False, False), (9, 11, '-', False, False), (4, 7, '-', False, False), (14, 14, '-', False, False)]
+  rerank_top5=[(3, 2, '-', False, False), (12, 12, '-', False, False), (9, 11, '-', False, False), (4, 7, '-', False, False), (14, 14, '-', False, False)]
+  top1_extracted: coarse=None rerank=None
+  gold=1.5 in_candidate_pool=False
+  NOTE: 答案不在候选池内，重排不改变召回结果
+Q: 本机使用哪种制冷剂?
+  coarse_top5(page,cid,extracted,competing,fragmented)=[(4, 5, '-', False, False), (14, 14, '-', False, False), (4, 7, '-', False, False), (2, 1, '-', False, False), (22, 20, '-', False, False)]
+  rerank_top5=[(4, 5, '-', False, False), (14, 14, '-', False, False), (4, 7, '-', False, False), (2, 1, '-', False, False), (22, 20, '-', False, False)]
+  top1_extracted: coarse=None rerank=None
+  gold=R410A in_candidate_pool=True
+NOTE: 命中按 chunk 判定，不按页判定。
+NOTE: 精排用分档排序，不与粗排分数加权。
